@@ -54,7 +54,7 @@ resource "aws_subnet" "subred_privada2" {
 
 resource "aws_security_group" "instance_security_group" {
     name = "instances_sg"
-    description = "security group para instancias EC2"
+    description = "security group para practicas cloud"
     vpc_id = aws_vpc.vpc_principal.id
 
     ingress {
@@ -67,6 +67,13 @@ resource "aws_security_group" "instance_security_group" {
     ingress {
         from_port = 22
         to_port = 22
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    ingress {
+        from_port = 3306
+        to_port = 3306
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }

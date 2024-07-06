@@ -26,19 +26,6 @@ resource "aws_lb_target_group_attachment" "test2" {
   port             = 80
 }
 
-# resource "aws_lb_target_group_attachment" "target_group_attachment" {
-#   # covert a list of instance objects to a map with instance ID as the key, and an instance
-#   # object as the value.
-#   for_each = {
-#     for k, v in [aws_instance.instancia1, aws_instance.instancia2]:
-#     k => v
-#   }
-
-#   target_group_arn = aws_lb_target_group.target_group.arn
-#   target_id        = each.value.id
-#   port             = 80
-# }
-
 resource "aws_lb_listener" "lb_listener" {
   load_balancer_arn = aws_lb.load_balancer.arn
   port              = 80
